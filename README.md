@@ -29,6 +29,9 @@ Therefore, the attacker can change the "Pay Tom 1000 pounds" to "Pay Bob 9999 po
 ### a)
 A replay attack is an attack where the attacker intercepts a message, and retransmit it at a later time. Like if Alice sends Bob an encrypted text to pay Tom, although the attacker doesn't know the encryption key and hence can't encrypt messages themself, the attacker can simply replay the intercepted message, in which case Bob will receive the message, decrypt it, and think he needs to pay Tom again.
 
+### b)
+No, it is not safe to replace a nonce with a timestamp. A nonce is supposed to be a random number where the attacker have no chances to guessing. So if the other party can proof that they know the nonce you sent them, this adds to the authenticity of message. However, a timestamp is not random, and the attacker can easily guess it by reading the current time, and use it to verify themself.
+
 
 
 
