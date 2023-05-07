@@ -12,7 +12,7 @@ If you see any answer you don't agree on, please submit a [pull request](https:/
 
 ## Question 1
 ### a)
-
+Modern ciphers works on block of plain text instead of single symbols. A block cipher mode is a way to encrypt a sequence of blocks. The most simple way is to encrypt all blocks the same way, but then same blocks within the sequence will be encrypted into the same thing, making it easy to guess the content. Another block cipher mode is CBC, which using an initiation vector, and XOR the previous block with the current block before encrypting it. This way, even if the same block is encrypted, it will be encrypted into different things.
 
 
 # Checked by
