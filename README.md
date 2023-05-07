@@ -25,6 +25,11 @@ Yes, it is possible to change the message can construct a matching signature. As
 Therefore, the attacker can change the "Pay Tom 1000 pounds" to "Pay Bob 9999 pounds" using the known plain text attack, then reconstruct the El-Gamal ciphertext to match the new AES ciphertext.
 
 
+## Question 2
+### a)
+A replay attack is an attack where the attacker intercepts a message, and retransmit it at a later time. Like if Alice sends Bob an encrypted text to pay Tom, although the attacker doesn't know the encryption key and hence can't encrypt messages themself, the attacker can simply replay the intercepted message, in which case Bob will receive the message, decrypt it, and think he needs to pay Tom again.
+
+
 
 
 # Checked by
