@@ -33,13 +33,13 @@ A replay attack is an attack where the attacker intercepts a message, and retran
 No, it is not safe to replace a nonce with a timestamp. A nonce is supposed to be a random number where the attacker have no chances to guessing. So if the other party can proof that they know the nonce you sent them, this adds to the authenticity of message. However, a timestamp is not random, and the attacker can easily guess it by reading the current time, and use it to verify themself.
 
 ### c)
-![1](http://github.com/chit-uob/uob-sn-2023-peq1/blob/main/img/1.png?raw=true)
+![1](http://github.com/chit-uob/uob-sn-2023-peq2/blob/main/img/1.png?raw=true)
 It is possible to attack this protocol by using a replay attack, since for the same payment message, it will be signed with the same signature, and the encrypted message will be the same. Therefore, after the first protocol run. C can intercept the message from B to A, and replace the second part of the message with the intercepted message from the first protocol run. 
 
 The questions specify different protocol runs produce different payment messages. So if A checks that the payment message must be different everytime, then an replay attack doesn't work.
 
 ### d)
-![2](http://github.com/chit-uob/uob-sn-2023-peq1/blob/main/img/2.png?raw=true)
+![2](http://github.com/chit-uob/uob-sn-2023-peq2/blob/main/img/2.png?raw=true)
 From the NIST, key agreement is a key-establishment procedure where resultant keying material is a function of information contributed by two or more participants, so that no party can predetermine the value of the keying material independently of the other party’s contribution. In this protocol, it doesn't satisfy key agreement because the attacker can make it so that both party ends up with different keys, although the attacker cannot intercept the messages.
 
 The attacker C can intercept the first message, and pretend instead that C is trying to talk with B. Then B will send to C their nonce encrypted with C's public key, which then C sends it to A but encrypt with A's public key. Then A confirms to B that they know B's nonce, which C forwards to B. Then A will think the key is N_A N_B, but B thinks the key is N_C N_B. Therefore, the attacker can make it so that both party ends up with different keys, although the attacker cannot intercept the messages.
