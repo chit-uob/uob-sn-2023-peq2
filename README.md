@@ -32,6 +32,11 @@ A replay attack is an attack where the attacker intercepts a message, and retran
 ### b)
 No, it is not safe to replace a nonce with a timestamp. A nonce is supposed to be a random number where the attacker have no chances to guessing. So if the other party can proof that they know the nonce you sent them, this adds to the authenticity of message. However, a timestamp is not random, and the attacker can easily guess it by reading the current time, and use it to verify themself.
 
+### c)
+![1](http://github.com/chit-uob/uob-sn-2023-peq1/blob/main/img/1.png?raw=true)
+It is possible to attack this protocol by using a replay attack, since for the same payment message, it will be signed with the same signature, and the encrypted message will be the same. Therefore, after the first protocol run. C can intercept the message from B to A, and replace the second part of the message with the intercepted message from the first protocol run. 
+
+The questions specify different protocol runs produce different payment messages. So if A checks that the payment message must be different everytime, then an replay attack doesn't work.
 
 
 
