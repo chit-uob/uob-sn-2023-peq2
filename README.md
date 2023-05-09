@@ -58,6 +58,12 @@ old EIP (4 byte pointer)
 
 --Bottom of stack frame--
 
+#### ii)
+The code is vulnerable to buffer overflow attack. At the stage of copying the content of password to password_buffer, there is no check to make sure password is of the correct length. That means any data longer than 16 bytes will overflow to the stack.
+
+#### iii)
+If the input password is 20 characters long, since the password_buffer is only 16 bytes long, the remaining 4 bytes will overflow to the next item on the stack, which is the authenticated integer variable which is 4 bytes long. Therefore, an attacker can overwrite the value of the integer authenticated.
+
 # Checked by
 If you find these answers correct, you can submit a pull request to add your name here, to add to the credibility of the answers.
 - Chit
