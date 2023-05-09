@@ -36,7 +36,7 @@ No, it is not safe to replace a nonce with a timestamp. A nonce is supposed to b
 ![1](http://github.com/chit-uob/uob-sn-2023-peq2/blob/main/img/1.png?raw=true)
 It is possible to attack this protocol by using a replay attack, since for the same payment message, it will be signed with the same signature, and the encrypted message will be the same. Therefore, after the first protocol run. C can intercept the message from B to A, and replace the second part of the message with the intercepted message from the first protocol run. 
 
-The questions specify different protocol runs produce different payment messages. So if A checks that the payment message must be different everytime, then an replay attack doesn't work.
+The questions specify different protocol runs produce different payment messages. So if A checks that the payment message must be different everytime, then a replay attack wouldn't work.
 
 ### d)
 ![2](http://github.com/chit-uob/uob-sn-2023-peq2/blob/main/img/2.png?raw=true)
@@ -50,10 +50,14 @@ The attacker C can intercept the first message, and pretend instead that C is tr
 #### i)
 --Top of stack frame--
 
-password_bugger[16] (16 byte array)
+password_buffer[16] (16 byte array)
+
 authenticated (4 byte for integer)
+
 old EBP (4 byte pointer)
+
 old EIP (4 byte pointer)
+
 *password (4 byte pointer)
 
 --Bottom of stack frame--
