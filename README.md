@@ -77,15 +77,16 @@ If the input password is 20 characters long, since the password_buffer is only 1
 To circumvent the password check, we can craft a 20 bytes password, the first 16 bytes can all be the character 'a', then the last 4 bytes should contain the byte representation of the integer 1. Then the last 4 bytes will overflow to the authenticated integer, and change it to 1, which will pass the password check.
 
 #### ii)
-To achieve arbitrary code execution, we can craft a very long message, the first 24 bytes can be all 'a', then the next 4 bytes will be the return address of the function, so the attacker must either know the data layout (in which case they can put the exact return address of following attack code), or the attacker can guess a return address. Then the remaining data can be a NOP slide followed by the attack code. So when the program executes, after the check_authentication function is called, it will return to the new return address. If the attacker guessed the return address, they can bet on the return address pointing to some part of the NOP slide, which will then slide to the attack code.
+To achieve arbitrary code execution, we can put the attack code within the first 24 bytes, then the next 4 bytes will be the return address of the function, so the attacker must either know the data layout (in which case they can put the exact return address of following attack code), or the attacker can guess a return address. So when the program executes, after the check_authentication function is called, it will return to the new return address, which is the attack code we placed.
 
 ### c)
-The checks do not achieve the intended purpose because strcpy is executed before setting the last character to the null terminator. Therefore, the buffer will overflow before the null terminator is set. The change we need to make to the code is to 1) only copy 16 bytes of code from password, then 2) set the last byte of password_buffer to null terminator.
+The checks do not achieve the intended purpose because strcpy is executed before setting the last character to the null terminator. Therefore, the buffer will overflow before the null terminator is set. The change we need to make to the code is to 1) only copy 15 bytes of code from password, then 2) set the last byte of password_buffer to null terminator.
 
 # Checked by
 If you find these answers correct, you can submit a pull request to add your name here, to add to the credibility of the answers.
 - Chit
 - Tom
+- 
 # Plug
 If you find this helpful, please consider following my blog on [Chit's Programming Blog](https://blog.cpbprojects.me), where I post about my programming projects, and other things I find interesting.
 
