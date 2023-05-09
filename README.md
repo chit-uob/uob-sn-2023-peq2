@@ -64,6 +64,16 @@ The code is vulnerable to buffer overflow attack. At the stage of copying the co
 #### iii)
 If the input password is 20 characters long, since the password_buffer is only 16 bytes long, the remaining 4 bytes will overflow to the next item on the stack, which is the authenticated integer variable which is 4 bytes long. Therefore, an attacker can overwrite the value of the integer authenticated.
 
+### b)
+#### i)
+To circumvent the password check, we can craft a 20 bytes password, the first 16 bytes can all be the character 'a', then the last 4 bytes should contain the byte representation of the integer 1. Then the last 4 bytes will overflow to the authenticated integer, and change it to 1, which will pass the password check.
+
+#### ii)
+To achieve arbitrary code execution, we can craft a very long message, the first 24 bytes can be all 'a', then the next 4 bytes will be the return address of the function, so we need to give it a return address that points to our attack code. Then the remaining data can be the attack code. So when the program executes, after the check_authentication function is called, it will return to our attack code, where we can achieve arbitrary code execution.
+
+### c)
+The checks do not achieve the intended purpose because strcpy is done before setting the last character to the null terminator. Therefore, the buffer will overflow before the null terminator is set. The change we need to make to the code is to 1) only copy 16 bytes of code from password, then 2) set the last byte of password_buffer to null terminator.
+
 # Checked by
 If you find these answers correct, you can submit a pull request to add your name here, to add to the credibility of the answers.
 - Chit
