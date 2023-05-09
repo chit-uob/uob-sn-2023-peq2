@@ -45,6 +45,18 @@ From the NIST, key agreement is a key-establishment procedure where resultant ke
 The attacker C can intercept the first message, and pretend instead that C is trying to talk with B. Then B will send to C their nonce encrypted with C's public key, which then C sends it to A but encrypt with A's public key. Then A confirms to B that they know B's nonce, which C forwards to B. Then A will think the key is N_A N_B, but B thinks the key is N_C N_B. Therefore, the attacker can make it so that both party ends up with different keys, although the attacker cannot intercept the messages.
 
 
+## Question 3
+### a)
+#### i)
+--Top of stack frame--
+
+password_bugger[16] (16 byte array)
+authenticated (4 byte for integer)
+old EBP (4 byte pointer)
+old EIP (4 byte pointer)
+*password (4 byte pointer)
+
+--Bottom of stack frame--
 
 # Checked by
 If you find these answers correct, you can submit a pull request to add your name here, to add to the credibility of the answers.
