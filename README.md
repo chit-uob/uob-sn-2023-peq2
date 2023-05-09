@@ -51,7 +51,9 @@ The attacker Eve can intercept the first message from Alice, and replace the mes
 --Top of stack frame--
 
 password_buffer[0] (1 byte character)
+
 ... (14 character variables, one byte each)
+
 password_buffer[15] (one byte, start of array)
 
 authenticated (4 bytes for integer)
