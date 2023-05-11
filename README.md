@@ -41,7 +41,7 @@ It is possible to attack this protocol by using a replay attack, since for the s
 ### d)
 > Answer was edited after Eike's revision lecture, the previous solution assumed that Eve cannot write Alice's identity, but it doesn't seems to be the case, as the identity was not signed. Also, in the previous solution, Bob realizes that he is talking to Eve, but in this solution, Bob thinks he's talking to Alice.
 
-![2](http://github.com/chit-uob/uob-sn-2023-peq2/blob/main/img/2.png?raw=true)
+![2](http://github.com/chit-uob/uob-sn-2023-peq2/blob/main/img/3.png?raw=true)
 From the NIST, key agreement is a key-establishment procedure where resultant keying material is a function of information contributed by two or more participants, so that no party can predetermine the value of the keying material independently of the other party’s contribution. In this protocol, it doesn't satisfy key agreement because the attacker can make it so that both parties end up with different keys, although the attacker cannot decrypt all future messages.
 
 The attacker Eve can intercept the first message from Alice, and replace the message with her own nonce and by Alice's signature. Then Bob will send to Alice his nonce encrypted with Alice's public key. Then Alice confirms to Bob that they know Bob's nonce, which Eve forwards to Bob. Then Alice has the key N_A N_B, but B has the key N_C N_B. Therefore, the attacker can make it so that both parties end up with different keys, thus not satisfying key agreement.
