@@ -39,10 +39,12 @@ It is possible to attack this protocol by using a replay attack, since for the s
 //The question specifies that different protocol runs produce different payment messages. If this means that identical payment messages are refused, this attack would not work. However, as it just says "produce", the replay attack is assumedly still possible.
 
 ### d)
+> Answer was edited after Eike's revision lecture, the previous solution assumed that Eve cannot write Alice's identity, but it doesn't seems to be the case, as the identity was not signed. Also, in the previous solution, Bob realizes that he is talking to Eve, but in this solution, Bob thinks he's talking to Alice.
+
 ![2](http://github.com/chit-uob/uob-sn-2023-peq2/blob/main/img/2.png?raw=true)
 From the NIST, key agreement is a key-establishment procedure where resultant keying material is a function of information contributed by two or more participants, so that no party can predetermine the value of the keying material independently of the other party’s contribution. In this protocol, it doesn't satisfy key agreement because the attacker can make it so that both parties end up with different keys, although the attacker cannot decrypt all future messages.
 
-The attacker Eve can intercept the first message from Alice, and replace the message with one using her own nonce and signature. This will mean that Bob now thinks he is communicating with Eve. Then Bob will send to Eve his nonce encrypted with Eve's public key, which Eve then decrypts and sends to Alice encrypted with Alice's public key. Then Alice confirms to Bob that they know Bob's nonce, which Eve forwards to Bob. Then Alice has the key N_A N_B, but B has the key N_C N_B. Therefore, the attacker can make it so that both parties end up with different keys, thus not satisfying key agreement.
+The attacker Eve can intercept the first message from Alice, and replace the message with her own nonce and by Alice's signature. Then Bob will send to Alice his nonce encrypted with Alice's public key. Then Alice confirms to Bob that they know Bob's nonce, which Eve forwards to Bob. Then Alice has the key N_A N_B, but B has the key N_C N_B. Therefore, the attacker can make it so that both parties end up with different keys, thus not satisfying key agreement.
 
 
 ## Question 3
@@ -86,7 +88,7 @@ The checks do not achieve the intended purpose because strcpy is executed before
 If you find these answers correct, you can submit a pull request to add your name here, to add to the credibility of the answers.
 - Chit
 - Tom
-- 
+
 # Plug
 If you find this helpful, please consider following my blog on [Chit's Programming Blog](https://blog.cpbprojects.me), where I post about my programming projects, and other things I find interesting.
 
